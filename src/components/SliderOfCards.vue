@@ -1,5 +1,8 @@
 <script>
-import Card from "./Card.vue"
+import Card from "./Card.vue";
+import { mapActions, mapState } from 'pinia';
+import {useAppStore} from "../store/appStore";
+
 export default{
   name: "Slider",
   props:{
@@ -9,29 +12,37 @@ export default{
     Card
   },
   data() {
-  
     return {
       firstIndex:0,
       lastIndex:0,
       range:3,
-      cards:[1,2,3,4,5,6,7,8,9,10,11,12],
-      displayedCards:[]
+      cards:[],
+      displayedCards:[],
+      limit: 8
     }
   },
   methods:{
     previousSlide(){
+      let countModulo = this.cards.length % this.range;
       if(this.firstIndex - this.range < 0){
         return
       }
-      console.log(this.firstIndex,this.range);
+      if(this.lastIndex % this.range){
+        this.lastIndex -= countModulo;
+        this.firstIndex -= this.range;
+        this.showCardsByIndexes();
+        return
+      }
+      console.log(this.firstIndex,this.lastIndex,this.range);
       this.firstIndex -= this.range;
       this.lastIndex -= this.range;
       this.showCardsByIndexes();
     },
     nextSlide(){
-      let countModulo = this.cards.length % this.range;
-      if(this.lastIndex + this.range > this.cards.length){  
-        if(countModulo){
+      if(this.lastIndex + this.range > this.cards.length ){  
+        console.log(this.firstIndex,this.lastIndex,this.range);
+        let countModulo = this.cards.length % this.range;
+        if(countModulo + this.lastIndex <= this.cards.length){
           this.firstIndex = this.lastIndex;
           this.lastIndex += countModulo;
           this.showCardsByIndexes();
@@ -50,12 +61,16 @@ export default{
     }
   },
   computed:{
-   
+   ...mapState(useAppStore,['getAllDogsData'])
   },
     
   mounted(){
-    this.displayedCards = this.cards.slice(0,3);
+    this.cards = this.getAllDogsData;
+    if(this.getAllDogsData.length !== this.limit){
+      this.cards = this.cards.slice(0,this.limit)
+    }
     this.lastIndex += this.range;
+    this.displayedCards = this.cards.slice(this.firstIndex,this.lastIndex);
   }
 }
 </script>
@@ -63,10 +78,10 @@ export default{
 <template>
   <div class="carousel-container">
     <div class="carousel-inner">
-      <!-- slots could be here -->
       <div class="track">
-        <!-- <slot name="card" v-bind="cardData"></slot> -->
-        <Card v-for="card in displayedCards" :key="card" />
+        <template v-for="card in displayedCards" :key="card.id">
+          <slot name="card" :card="card"></slot>
+        </template>
       </div>
     </div>
     <div class="navigation">
