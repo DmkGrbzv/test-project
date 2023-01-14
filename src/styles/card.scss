@@ -1,0 +1,23 @@
+.card-container{
+  flex-shrink: 0;
+  padding-right: 34px;
+  .card{
+    width: 421px;
+    height: 551px;
+    border: 1px solid #aaa;
+    display: flex;
+    flex-direction: column;
+    &>*{
+      flex: 1;
+    }
+    .img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .info{
+      flex-basis: 84px;
+      flex-grow: 0;
+    }
+  }
+}

@@ -1,9 +1,32 @@
-<script setup>
-
+<script>
+import Slider from "./components/SliderOfCards.vue";
+export default{
+  name: "App",
+  components: {
+    Slider
+  },
+  data() {
+  
+    return {
+      
+    }
+  },
+  methods:{
+  
+  },
+  computed:{
+   
+  },
+    
+  mounted(){
+    
+  }
+}
+  
 </script>
 
 <template>
-  <p class="redText">sad</p>
+  <Slider />
 </template>
 
 <style lang="scss">
