@@ -35,7 +35,7 @@ export default{
             <img :src="image.url" :alt=name>
           </div>
           <div class="info">
-            <div class="title">Breed</div>
+            <div class="title">BREED</div>
             <div class="text">{{ this.name }}</div>
           </div>
         </div>
