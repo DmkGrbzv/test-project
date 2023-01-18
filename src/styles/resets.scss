@@ -101,8 +101,9 @@ input, select {
     vertical-align:middle;
 }
 
-html {
+html,body {
   box-sizing: border-box;
+  min-height: 100%;
 }
 *, *:before, *:after {
   box-sizing: inherit;

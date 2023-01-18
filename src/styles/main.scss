@@ -1,8 +1,23 @@
 @import "./resets.scss";
 @import "./variables.scss";
+@import "./header.scss";
 @import "./card.scss";
 @import "./carousel.scss";
+@import "./footer.scss";
 
 body{
   font-family: $mainFont;
+}
+.wrapper{
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &>section{
+    padding: 30px;
+    flex: 1 1 auto;
+  }
 }

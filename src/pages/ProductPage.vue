@@ -1,6 +1,6 @@
 <script>
-export default{
-  name: "Footer",
+  export default{
+  name: "ProductPage",
   props:{
     
   },
@@ -22,16 +22,13 @@ export default{
   mounted(){
    
   }
-}
-  
+  }
 </script>
 
 <template>
-  <footer>
-    <p>2021 © copyright</p>
-  </footer>
+ 
 </template>
 
 <style lang="scss">
-  
+ 
 </style>
