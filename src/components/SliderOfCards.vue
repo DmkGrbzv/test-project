@@ -1,12 +1,13 @@
 <script>
 import Card from "./Card.vue";
-import { mapActions, mapState } from 'pinia';
-import {useAppStore} from "../store/appStore";
 
 export default{
   name: "Slider",
   props:{
-    
+    getAllCardsData:{
+      type: Array,
+      required: true
+    }
   },
   components: {
     Card
@@ -18,7 +19,8 @@ export default{
       range:3,
       cards:[],
       displayedCards:[],
-      limit: 8
+      limit: 8,
+      windowWidth: window.innerWidth
     }
   },
   methods:{
@@ -58,25 +60,31 @@ export default{
       this.displayedCards = this.cards.slice(this.firstIndex, this.lastIndex);
       console.log(this.displayedCards,this.cards);
       console.log(this.firstIndex,this.lastIndex)
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
     }
   },
-  computed:{
-   ...mapState(useAppStore,['getAllDogsData'])
-  },
-    
   mounted(){
-    this.cards = this.getAllDogsData;
-    if(this.getAllDogsData.length !== this.limit){
+    this.cards = this.getAllCardsData;
+    if(this.getAllCardsData.length !== this.limit){
       this.cards = this.cards.slice(0,this.limit)
     }
     this.lastIndex += this.range;
     this.displayedCards = this.cards.slice(this.firstIndex,this.lastIndex);
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    })
+  },
+  onUnmounted(){
+    window.removeEventListener('resize', this.onResize);     
   }
 }
 </script>
 
 <template>
   <div class="carousel-container">
+    {{ windowWidth }}
     <div class="carousel-inner">
       <div class="track">
         <template v-for="card in displayedCards" :key="card.id">

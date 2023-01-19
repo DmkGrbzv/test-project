@@ -2,8 +2,10 @@
   flex-shrink: 0;
   padding-right: 34px;
   .card{
-    width: 421px;
-    height: 551px;
+    // max-width: 421px;
+    // max-height: 551px;
+    width: 100%;
+    height: 100%;
     border: 3px solid $cardBorderColor;
     display: flex;
     flex-direction: column;
