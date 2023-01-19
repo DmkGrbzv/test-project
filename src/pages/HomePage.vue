@@ -33,8 +33,8 @@ import {useAppStore} from "../store/appStore";
 </script>
 
 <template>
- <p>Home</p>
  <section>
+  <p>Home</p>
       <Slider v-if="getDataIsLoadedValue" :getAllCardsData="getAllDogsData">
         <template #card="{card}">
           <Card :name="card.name" :id="card.id" :image="card.image"/>

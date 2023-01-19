@@ -35,6 +35,9 @@ export default{
         this.showCardsByIndexes();
         return
       }
+      if(this.firstIndex === this.lastIndex){
+        this.firstIndex -= this.range
+      }
       console.log(this.firstIndex,this.lastIndex,this.range);
       this.firstIndex -= this.range;
       this.lastIndex -= this.range;
@@ -57,15 +60,27 @@ export default{
       this.showCardsByIndexes();
     },
     showCardsByIndexes(){
+      if(this.firstIndex === this.lastIndex){
+        return
+      }
       this.displayedCards = this.cards.slice(this.firstIndex, this.lastIndex);
       console.log(this.displayedCards,this.cards);
       console.log(this.firstIndex,this.lastIndex)
     },
     onResize() {
       this.windowWidth = window.innerWidth;
+      if(this.windowWidth <= 950){
+        this.range = 1;
+        this.showCardsByIndexes();
+        return
+      }
+      this.range = 3;
+      this.showCardsByIndexes();
     }
   },
   mounted(){
+    this.onResize();
+    // this.range = 1;
     this.cards = this.getAllCardsData;
     if(this.getAllCardsData.length !== this.limit){
       this.cards = this.cards.slice(0,this.limit)

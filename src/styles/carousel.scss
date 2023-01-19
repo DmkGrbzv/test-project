@@ -4,6 +4,13 @@
   min-height: 200px;
   max-height: 551px;
   position: relative;
+  @media screen and (max-width: 900px){
+    &{
+     width: 80%;
+     height: 100%;
+     margin: 0 50px;
+    }
+  }
   .track{
     box-sizing: border-box;
     width: 100%;
@@ -13,6 +20,13 @@
     &>div{
       width: 455px;
       height: 551px;
+      padding: 20px;
+    }
+    @media screen and (max-width: 900px){
+      &{
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
   .carousel-inner{
