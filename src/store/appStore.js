@@ -23,7 +23,6 @@ export const useAppStore = defineStore("appStore", {
           this.dogsData = response.data;
           this.dataIsLoaded = true;
         });
-      console.log(this.dogsData);
     },
   },
 });

@@ -38,14 +38,12 @@ export default{
       if(this.firstIndex === this.lastIndex){
         this.firstIndex -= this.range
       }
-      console.log(this.firstIndex,this.lastIndex,this.range);
       this.firstIndex -= this.range;
       this.lastIndex -= this.range;
       this.showCardsByIndexes();
     },
     nextSlide(){
       if(this.lastIndex + this.range > this.cards.length ){  
-        console.log(this.firstIndex,this.lastIndex,this.range);
         let countModulo = this.cards.length % this.range;
         if(countModulo + this.lastIndex <= this.cards.length){
           this.firstIndex = this.lastIndex;
@@ -64,8 +62,6 @@ export default{
         return
       }
       this.displayedCards = this.cards.slice(this.firstIndex, this.lastIndex);
-      console.log(this.displayedCards,this.cards);
-      console.log(this.firstIndex,this.lastIndex)
     },
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -80,7 +76,6 @@ export default{
   },
   mounted(){
     this.onResize();
-    // this.range = 1;
     this.cards = this.getAllCardsData;
     if(this.getAllCardsData.length !== this.limit){
       this.cards = this.cards.slice(0,this.limit)
@@ -99,7 +94,6 @@ export default{
 
 <template>
   <div class="carousel-container">
-    {{ windowWidth }}
     <div class="carousel-inner">
       <div class="track">
         <template v-for="card in displayedCards" :key="card.id">
@@ -108,12 +102,12 @@ export default{
       </div>
     </div>
     <div class="navigation">
-      <div class="prev" @click="previousSlide">
+      <div class="prev" @click="previousSlide" v-if="firstIndex > 0">
         <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.31662 17.9001L7.95001 10.2501L0.31662 2.60002L2.66664 0.25L12.6667 10.2501L2.66664 20.2501L0.31662 17.9001Z" fill="#757575"/>
         </svg>
       </div>
-      <div class="next" @click="nextSlide">
+      <div class="next" @click="nextSlide" v-if="lastIndex < cards.length">
         <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.31662 17.9001L7.95001 10.2501L0.31662 2.60002L2.66664 0.25L12.6667 10.2501L2.66664 20.2501L0.31662 17.9001Z" fill="#757575"/>
         </svg>

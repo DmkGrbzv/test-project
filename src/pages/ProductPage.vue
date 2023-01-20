@@ -37,12 +37,14 @@
 
 <template>
   <section class="product">
-    <p class="product__title">ProductList</p>
+    <div class="product__content">
+      <h2 class="product__title">ProductList</h2>
       <div class="product__list">
         <div class="product__item" v-for="item in getAllDogsData" :key="item.id">
-        <Card :name="item.name" :id="item.id" :image="item.image"/>
+        <Card :name="item.name" :id="item.id" :image="item.image" />
       </div>
       </div>
+    </div>
   </section>
 </template>
 
