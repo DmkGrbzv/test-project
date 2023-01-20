@@ -29,7 +29,7 @@
 <template>
   <section class="product">
     <div class="product__content">
-      <h2 class="product__title">ProductList</h2>
+      <h2 class="product__title">Product Page</h2>
       <div class="product__list">
         <div class="product__item" v-for="item in getAllDogsData" :key="item.id">
         <Card :name="item.name" :id="item.id" :image="item.image" />
