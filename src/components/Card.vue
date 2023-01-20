@@ -6,24 +6,6 @@ export default{
     image: Object,
     id: Number
   },
-  components: {
-  },
-  data() {
-  
-    return {
-      
-    }
-  },
-  methods:{
-  
-  },
-  computed:{
-   
-  },
-    
-  mounted(){
-   
-  }
 }
   
 </script>

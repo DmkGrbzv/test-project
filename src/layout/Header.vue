@@ -3,13 +3,7 @@ import router from "../router";
 import { useRoute } from "vue-router";
 export default{
   name: "Header",
-  props:{
-    
-  },
-  components: {
-  },
   data() {
-  
     return {
       useRoute,
       homePageAddress:"/",

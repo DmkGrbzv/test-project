@@ -15,15 +15,6 @@
   components: {
     Card
   },
-  data() {
-  
-    return {
-      
-    }
-  },
-  methods:{
-  
-  },
   computed:{
     ...mapState(useAppStore,['getDataIsLoadedValue']),
     ...mapState(useAppStore,['getAllDogsData'])

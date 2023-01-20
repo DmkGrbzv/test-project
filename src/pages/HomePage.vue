@@ -13,22 +13,10 @@ import {useAppStore} from "../store/appStore";
     Slider,
     Card
   },
-  data() {
-  
-    return {
-      
-    }
-  },
-  methods:{
-  
-  },
   computed:{
     ...mapState(useAppStore,['getDataIsLoadedValue']),
     ...mapState(useAppStore,['getAllDogsData'])
   },
-  mounted(){
-   
-  }
   }
 </script>
 

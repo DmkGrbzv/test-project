@@ -1,27 +1,6 @@
 <script>
 export default{
   name: "Footer",
-  props:{
-    
-  },
-  components: {
-  },
-  data() {
-  
-    return {
-      
-    }
-  },
-  methods:{
-  
-  },
-  computed:{
-   
-  },
-    
-  mounted(){
-   
-  }
 }
   
 </script>
